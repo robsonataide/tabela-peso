@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context>
+      <Resource accessToUnderlyingConnectionAllowed="true" 
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.jdbc.Driver"
+        name="jdbc/main" 
+        username="94q72p5277n34405"
+        password="59q46701o935qpr1" 
+        removeAbandoned="false" 
+        removeAbandonedTimeout="60" 
+        logAbandoned="true" 
+        url="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/94d72c52-77a3-4405-9d46-701b935dce13" />
+</Context>
