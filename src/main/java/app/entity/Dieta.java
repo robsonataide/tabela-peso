@@ -7,13 +7,13 @@ import javax.xml.bind.annotation.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Classe que representa a tabela USERROLE
+ * Classe que representa a tabela DIETA
  * @generated
  */
 @Entity
-@Table(name = "\"USERROLE\"")
+@Table(name = "\"DIETA\"")
 @XmlRootElement
-public class UserRole implements Serializable {
+public class Dieta implements Serializable {
 
   /**
    * UID da classe, necessário na serialização 
@@ -31,6 +31,19 @@ public class UserRole implements Serializable {
   /**
   * @generated
   */
+  @Column(name = "peso_inicial", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.Double pesoInicial;
+  
+  /**
+  * @generated
+  */
+  @Temporal(TemporalType.DATE)
+  @Column(name = "inicio", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.util.Date inicio;
+  
+  /**
+  * @generated
+  */
   @ManyToOne
   @JoinColumn(name="fk_user", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
   private User user;
@@ -38,15 +51,14 @@ public class UserRole implements Serializable {
   /**
   * @generated
   */
-  @ManyToOne
-  @JoinColumn(name="fk_role", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
-  private Role role;
+  @Column(name = "nome", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String nome;
   
   /**
    * Construtor
    * @generated
    */
-  public UserRole(){
+  public Dieta(){
   }
 
   /**
@@ -64,8 +76,46 @@ public class UserRole implements Serializable {
    * @param id id
    * @generated
    */
-  public UserRole setId(java.lang.String id){
+  public Dieta setId(java.lang.String id){
     this.id = id;
+    return this;
+  }
+  /**
+   * Obtém pesoInicial
+   * 
+   * return pesoInicial
+   * @generated
+   */
+  public java.lang.Double getPesoInicial(){
+    return this.pesoInicial;
+  }
+  
+  /**
+   * Define pesoInicial
+   * @param pesoInicial pesoInicial
+   * @generated
+   */
+  public Dieta setPesoInicial(java.lang.Double pesoInicial){
+    this.pesoInicial = pesoInicial;
+    return this;
+  }
+  /**
+   * Obtém inicio
+   * 
+   * return inicio
+   * @generated
+   */
+  public java.util.Date getInicio(){
+    return this.inicio;
+  }
+  
+  /**
+   * Define inicio
+   * @param inicio inicio
+   * @generated
+   */
+  public Dieta setInicio(java.util.Date inicio){
+    this.inicio = inicio;
     return this;
   }
   /**
@@ -83,27 +133,27 @@ public class UserRole implements Serializable {
    * @param user user
    * @generated
    */
-  public UserRole setUser(User user){
+  public Dieta setUser(User user){
     this.user = user;
     return this;
   }
   /**
-   * Obtém role
+   * Obtém nome
    * 
-   * return role
+   * return nome
    * @generated
    */
-  public Role getRole(){
-    return this.role;
+  public java.lang.String getNome(){
+    return this.nome;
   }
   
   /**
-   * Define role
-   * @param role role
+   * Define nome
+   * @param nome nome
    * @generated
    */
-  public UserRole setRole(Role role){
-    this.role = role;
+  public Dieta setNome(java.lang.String nome){
+    this.nome = nome;
     return this;
   }
   
@@ -114,7 +164,7 @@ public class UserRole implements Serializable {
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    UserRole object = (UserRole)obj;
+    Dieta object = (Dieta)obj;
     if (id != null ? !id.equals(object.id) : object.id != null) return false;
     return true;
   }

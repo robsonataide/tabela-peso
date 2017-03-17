@@ -1,7 +1,5 @@
 package app.business;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -20,7 +18,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Service("UserBusiness")
 public class UserBusiness {
 
-  private static final Logger log = LoggerFactory.getLogger(UserBusiness.class);
   /**
    * Variável privada para verificação da criptofrafia
    * 
@@ -52,12 +49,7 @@ public class UserBusiness {
     String formPassword = entity.getPassword();
     String encryptionPassword = new BCryptPasswordEncoder().encode(formPassword);
     entity.setPassword(encryptionPassword);      
-    User result = null;
-    try {
-      result = repository.save(entity);
-    } catch (Exception e) {
-      log.error(e.getMessage());
-    }
+    User result = repository.save(entity);
     // begin-user-code
     // end-user-code
     return result;
@@ -75,12 +67,7 @@ public class UserBusiness {
     String formPassword = entity.getPassword();
     String encryptionPassword = formPassword.startsWith(ENCRYPT) ? formPassword : new BCryptPasswordEncoder().encode(formPassword);
     entity.setPassword(encryptionPassword);      
-    User result = null;
-    try {
-      result = repository.saveAndFlush(entity);
-    } catch (Exception e) {
-      log.error(e.getMessage());
-    }
+    User result = repository.saveAndFlush(entity);
     // begin-user-code
     // end-user-code
     return result;
@@ -92,14 +79,10 @@ public class UserBusiness {
    * @generated
    */
   public void delete(java.lang.String id) throws Exception {
+    User entity = this.get(id);
     // begin-user-code  
     // end-user-code
-    User entity = this.get(id);
-    try {
-      this.repository.delete(entity);
-    } catch (Exception e) {
-      log.error(e.getMessage());
-    }
+    this.repository.delete(entity);
     // begin-user-code  
     // end-user-code        
   }
@@ -168,6 +151,19 @@ public class UserBusiness {
     // begin-user-code
     // end-user-code  
     Page<UserRole> result = repository.findUserRole(id, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;    
+  }
+  
+  /**
+   * @generated modifiable
+   * OneToMany Relation
+   */  
+  public Page<Dieta> findDieta(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Dieta> result = repository.findDieta(id, pageable);
     // begin-user-code  
     // end-user-code        
     return result;    

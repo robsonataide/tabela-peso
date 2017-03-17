@@ -42,6 +42,12 @@ public class UserREST {
   @Qualifier("UserRoleBusiness")
   private UserRoleBusiness userRoleBusiness;
   /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("DietaBusiness")
+  private DietaBusiness dietaBusiness;
+  /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
    * 
    * @generated
@@ -150,6 +156,45 @@ public class UserREST {
 
 
   /**
+   * OneToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/{userId}/Dieta")    
+  public HttpEntity<PagedResources<Dieta>> findDieta(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findDieta(userId, pageable)), HttpStatus.OK);
+  }
+
+  /**
+   * OneToMany Relationship DELETE 
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE, value="/{userId}/Dieta/{dietaId}")    
+  public void deleteDieta(@PathVariable("dietaId") java.lang.String dietaId) throws Exception {
+    this.dietaBusiness.delete(dietaId);
+  }
+  
+  /**
+   * OneToMany Relationship PUT
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.PUT, value="/{userId}/Dieta")
+  public Dieta putDieta(@Validated @RequestBody final Dieta entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+    return this.dietaBusiness.put(entity);
+  }  
+  
+  /**
+   * OneToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST, value="/{userId}/Dieta")
+  public Dieta postDieta(@Validated @RequestBody final Dieta entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+    User user = this.userBusiness.get(userId);
+    entity.setUser(user);
+    return this.dietaBusiness.post(entity);
+  }   
+
+
+  /**
    * ManyToMany Relationship GET
    * @generated
    */
@@ -180,9 +225,9 @@ public class UserREST {
    * ManyToMany Relationship DELETE
    * @generated
    */  
-  @RequestMapping(method = RequestMethod.DELETE,value="/{userId}/Role/{roleId}")
-  public void deleteRole(@PathVariable("userId") java.lang.String userId, @PathVariable("roleId") java.lang.String roleId) {
-    this.userBusiness.deleteRole(userId, roleId);
+  @RequestMapping(method = RequestMethod.DELETE,value="/{userId}/Role/{RoleId}")
+  public void deleteRole(@PathVariable("userId") java.lang.String userId, @PathVariable("RoleId") java.lang.String RoleId) {
+    this.userBusiness.deleteRole(userId, RoleId);
   }  
 
 
@@ -191,9 +236,9 @@ public class UserREST {
    * 
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value = "/{userId}")
-  public User get(@PathVariable("userId") java.lang.String userId) throws Exception {
-    return userBusiness.get(userId);
+  @RequestMapping(method = RequestMethod.GET, value = "/{userid}")
+  public User get(@PathVariable("userid") java.lang.String userid) throws Exception {
+    return userBusiness.get(userid);
   }
 
 }

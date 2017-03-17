@@ -6,7 +6,9 @@
         <class>app.entity.UserRole</class>
         <class>app.entity.User</class>
         <class>app.entity.Role</class>
-            <properties>
+        <class>app.entity.Dieta</class>
+        <class>app.entity.Registro</class>
+        <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/94d72c52-77a3-4405-9d46-701b935dce13"/>
             <property name="javax.persistence.jdbc.user" value="94q72p5277n34405"/>

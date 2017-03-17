@@ -38,6 +38,7 @@ public class User implements Serializable {
    * @generated
    */
   @Id
+  @Column(name = "id", nullable = false, insertable=true, updatable=true)
   private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
   
   /**
@@ -45,12 +46,6 @@ public class User implements Serializable {
   */
   @Column(name = "login", nullable = false, unique = true, insertable=true, updatable=true)
   private java.lang.String login;
-  
-  /**
-  * @generated
-  */
-  @Column(name = "picture", nullable = true, unique = false, insertable=true, updatable=true)
-  private java.lang.String picture;
   
   /**
   * @generated
@@ -64,7 +59,13 @@ public class User implements Serializable {
   @Column(name = "theme", nullable = true, unique = false, insertable=true, updatable=true)
   private java.lang.String theme;
   
-    /**
+  /**
+  * @generated
+  */
+  @Column(name = "altura", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.Double altura;
+  
+  /**
    * Construtor
    * @generated
    */
@@ -148,25 +149,6 @@ public class User implements Serializable {
     return this;
   }
   /**
-   * Obtém picture
-   * 
-   * return picture
-   * @generated
-   */
-  public java.lang.String getPicture(){
-    return this.picture;
-  }
-  
-  /**
-   * Define picture
-   * @param picture picture
-   * @generated
-   */
-  public User setPicture(java.lang.String picture){
-    this.picture = picture;
-    return this;
-  }
-  /**
    * Obtém password
    * 
    * return password
@@ -202,6 +184,25 @@ public class User implements Serializable {
    */
   public User setTheme(java.lang.String theme){
     this.theme = theme;
+    return this;
+  }
+  /**
+   * Obtém altura
+   * 
+   * return altura
+   * @generated
+   */
+  public java.lang.Double getAltura(){
+    return this.altura;
+  }
+  
+  /**
+   * Define altura
+   * @param altura altura
+   * @generated
+   */
+  public User setAltura(java.lang.Double altura){
+    this.altura = altura;
     return this;
   }
   
