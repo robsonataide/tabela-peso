@@ -1,4 +1,4 @@
-# SpringBoot 4
+# SpringBoot
 
 Aplicação Web com Spring e módulos: **Data** e **Security**.
 
